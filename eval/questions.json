@@ -1,0 +1,16 @@
+[
+  {"id":"damage-bg","question":"What should I do if a delivery arrives with damaged outer packaging?","country":"BG","supported":true,"sources":["SOP-DAMAGE"],"behavior":"answer"},
+  {"id":"damage-de","question":"How do I record damaged packaging on a delivery?","country":"DE","supported":true,"sources":["SOP-DAMAGE"],"behavior":"answer"},
+  {"id":"sofia","question":"Which desk reviews damaged packaging in Bulgaria?","country":"BG","supported":true,"sources":["SOP-DAMAGE-BG"],"behavior":"answer"},
+  {"id":"missing","question":"What should I record when packages or items are missing?","country":"RO","supported":true,"sources":["SOP-MISSING"],"behavior":"answer"},
+  {"id":"replacement","question":"Can I promise replacement stock for missing items?","country":"BG","supported":true,"sources":["SOP-MISSING"],"behavior":"answer"},
+  {"id":"discrepancy","question":"What should I compare for a delivery discrepancy?","country":"DE","supported":true,"sources":["SOP-DISCREPANCY"],"behavior":"answer"},
+  {"id":"escalation","question":"How do I escalate an unresolved delivery discrepancy?","country":"RO","supported":true,"sources":["SOP-DISCREPANCY"],"behavior":"answer"},
+  {"id":"record","question":"Which fields must a complaint record contain?","country":"BG","supported":true,"sources":["SOP-DISCREPANCY","SOP-DAMAGE"],"behavior":"answer"},
+  {"id":"returns","question":"Does a recorded return request authorize dispatching packages back?","country":"RO","supported":true,"sources":["SOP-RETURNS"],"behavior":"answer"},
+  {"id":"leipzig","question":"Which desk handles a return request in Germany?","country":"DE","supported":true,"sources":["SOP-RETURNS-DE"],"behavior":"answer"},
+  {"id":"temperature","question":"What exact temperature range is required for a refrigerated delivery?","country":"BG","supported":false,"sources":[],"behavior":"insufficient"},
+  {"id":"ambiguous","question":"What should I do about damaged packaging?","country":null,"supported":false,"sources":[],"behavior":"clarify"},
+  {"id":"outside","question":"Write a poem about the moon.","country":"BG","supported":false,"sources":[],"behavior":"out_of_scope"},
+  {"id":"conflict","question":"Compare return procedures in Germany and Bulgaria.","country":"DE","supported":false,"sources":[],"behavior":"clarify"}
+]
