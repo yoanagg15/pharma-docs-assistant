@@ -15,3 +15,8 @@ data/runtime/
 artifacts/
 dist/
 *.egg-info/
+local.settings.json
+.azurefunctions/
+.python_packages/
+node_modules/
+.pnpm-store/

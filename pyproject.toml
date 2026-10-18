@@ -17,6 +17,8 @@ dependencies = [
   "langchain-text-splitters>=1,<2",
   "langgraph>=1,<2",
   "fastembed>=0.7,<1",
+  "azure-functions>=1.24,<2",
+  "azure-storage-blob>=12.28,<13",
 ]
 
 [dependency-groups]

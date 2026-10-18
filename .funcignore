@@ -1,0 +1,16 @@
+.env
+.env.*
+.git*
+.venv/
+.uv-cache/
+.pytest_cache/
+.ruff_cache/
+.azurefunctions/
+local.settings.json
+data/runtime/
+artifacts/
+tests/
+__pycache__/
+*.pyc
+tools/
+.pnpm-store/

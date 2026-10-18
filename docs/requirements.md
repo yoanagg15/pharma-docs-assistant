@@ -16,6 +16,7 @@
 | P1 | As a user, I need useful errors. | Unknown deliveries, API/model outage, missing index and invalid fields receive actionable messages; no raw credential-bearing exception is shown. |
 | P1 | As a bilingual demonstrator, I need English and Bulgarian. | Language selector translates UI/messages; Bulgarian questions work with a real model; original English source quotes remain inspectable; form input survives language changes. |
 | P1 | As the project owner, I need documentation in both languages. | README and all engineering documents under `docs/` have English/Bulgarian pairs and reciprocal links; commands and recorded results agree; changes update both versions. |
+| P1 | As a demonstrator, I need a subscription-free Blob exercise. | Publish only seeded procedures to Azurite, inspect preserved metadata, download checked originals, and keep the core app usable when the emulator is absent. |
 
 ## Mapping to role requirements
 
@@ -28,7 +29,7 @@
 | Testing and CI/CD | pytest, Ruff, locked dependencies, GitHub Actions CI definition | Hosted CI must run after user-authorized push; no CD |
 | Security | Ignored secrets, fixed destinations, schemas, confirmation gate, parameterized SQL | Local demo without production authentication or regulatory certification |
 | Business communication | Requirements, activity trace, demo script, architecture and limitations | No real stakeholder interviews or acceptance study |
-| Azure / cloud | No cloud infrastructure needed | No Azure deployment or Azure experience claimed |
+| Azure / cloud | Local Azure Functions integration and real Blob SDK calls to Azurite, without a subscription | No cloud deployment, managed identity, or Azure AI service validation |
 | Deep learning | Uses pretrained embedding and language models | No model training or fine-tuning |
 
 ## Prioritized next steps
@@ -40,4 +41,5 @@
 5. Add authentication and authorization only if moving beyond the localhost demo.
 
 Uploads, additional agents, email, Azure infrastructure, and JavaScript frontends are outside the
-first version. No claims of production readiness, affiliation, deployment, or clinical suitability.
+first version. The optional local Functions host does not provision cloud infrastructure.
+No claims of production readiness, affiliation, cloud deployment, or clinical suitability.

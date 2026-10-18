@@ -1,0 +1,9 @@
+{
+  "name": "pharmaops-local-storage-tools",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Optional Azurite development emulator; not a frontend",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {"node": ">=22"},
+  "dependencies": {"azurite": "3.37.0"}
+}

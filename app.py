@@ -5,6 +5,7 @@ import json
 
 import streamlit as st
 
+from pharmaops.blob_storage import LocalProcedureStore, StorageError
 from pharmaops.client import BusinessClient, BusinessError
 from pharmaops.config import Settings
 from pharmaops.i18n import translate
@@ -125,7 +126,9 @@ def show_result(result):
             st.text(doc.page_content)
 
 
-procedures, complaints = st.tabs([t("Procedure questions"), t("Delivery complaints")])
+procedures, complaints, documents = st.tabs(
+    [t("Procedure questions"), t("Delivery complaints"), t("Document storage")]
+)
 with procedures:
     st.subheader(t("Find the next operational step"))
     question = st.text_input(
@@ -236,3 +239,71 @@ with complaints:
             for name in ("draft", "draft_snapshot", "receipt", "complaint_result"):
                 st.session_state.pop(name, None)
             st.rerun()
+
+with documents:
+    st.subheader(t("Fictional procedure library"))
+    st.caption(t("LOCAL AZURITE EMULATOR · Azure Blob SDK · No Azure account or subscription"))
+    st.write(
+        t("Publish the seven seeded procedures, inspect metadata, and download verified originals.")
+    )
+    st.caption(
+        t(
+            "This library is a storage exercise. "
+            "Procedure answers still use the local indexed corpus."
+        )
+    )
+
+    def storage_action(action):
+        storage = LocalProcedureStore()
+        try:
+            with st.spinner(t("Contacting local procedure storage…")):
+                return action(storage)
+        except StorageError as exc:
+            st.error(t(str(exc)))
+            return None
+        finally:
+            storage.close()
+
+    if st.button(t("Publish demo procedures")):
+
+        def publish_and_list(storage):
+            storage.publish()
+            return storage.list_procedures()
+
+        records = storage_action(publish_and_list)
+        if records is not None:
+            st.session_state["stored_procedures"] = records
+            st.session_state.pop("blob_download", None)
+            st.success(t("Demo procedures published to local storage."))
+    if st.button(t("Refresh stored procedures")):
+        records = storage_action(lambda storage: storage.list_procedures())
+        if records is not None:
+            st.session_state["stored_procedures"] = records
+            st.session_state.pop("blob_download", None)
+    records = st.session_state.get("stored_procedures", [])
+    if not records:
+        st.info(t("No procedures loaded. Start Azurite, then publish or refresh."))
+    else:
+        name = st.selectbox(t("Stored procedure"), [record.name for record in records])
+        record = next(record for record in records if record.name == name)
+        st.json(
+            {
+                "name": record.name,
+                "bytes": record.size,
+                "etag": record.etag,
+                **record.metadata.model_dump(),
+            }
+        )
+        if st.button(t("Prepare verified download")):
+            data = storage_action(lambda storage: storage.download(name))
+            if data is not None:
+                st.session_state["blob_download"] = (name, data)
+        prepared = st.session_state.get("blob_download")
+        if prepared and prepared[0] == name:
+            st.download_button(
+                t("Download original procedure"),
+                data=prepared[1],
+                file_name=name,
+                mime="text/markdown",
+            )
+            st.caption(t("SHA-256 and document metadata checked. Original English source."))

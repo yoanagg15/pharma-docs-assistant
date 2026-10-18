@@ -76,3 +76,39 @@ not translation fidelity.
 - Linux execution, broader adversarial prompt-injection resistance, independent human quality
   grading, large corpora, real organizational SOPs, and production behavior.
 - Authentication, authorization, regulated deployment, and continuous deployment are not implemented.
+
+## Azure Functions local follow-up — 2026-10-18
+
+The optional adapter was run with Core Tools 4.14.0, Functions runtime 4.1052.200.26352,
+Python 3.12.12, and `azure-functions` 1.25.0. The host indexed `pharmaops_business_api` and
+listened on `127.0.0.1:7071`, confirmed using the operating system's listening socket table.
+No Azure login, subscription, cloud resource, Storage emulator, or cloud deployment was used.
+
+`python -m scripts.check_functions` made real HTTP calls through that local host. Health and
+DEL-1002 lookup passed; an unknown delivery returned 404; a changed draft rejected the old
+confirmation with 409; repeated submission returned the same fictional complaint reference.
+This validates the local Functions transport and shared business API, not Azure-hosted AI,
+cloud identities, distributed storage, production behavior, or an additional real-LLM run.
+See [the local guide](azure-local.md) for reproducible commands.
+After adding the adapter, the offline suite still passed all 24 tests. Ruff lint/format and
+the bilingual documentation checker passed (seven document pairs). Hosted CI for this
+follow-up has not been verified.
+
+## Local Blob Storage follow-up — 2026-10-18
+
+Azurite 3.37.0 ran on `127.0.0.1:10000` with the existing Node 24.19.0 binary; system Node
+14 was not replaced. The developer tool dependency setup used pnpm 11.25.0 with install
+scripts disabled and a saved lockfile. Python used `azure-storage-blob` 12.31.0 with
+Storage API `2023-11-03`; no cloud account or user credential was used for storage.
+
+The real SDK integration check uploaded seven seeded Markdown procedures, listed their
+metadata, verified byte-for-byte downloads and header metadata, and confirmed that repeated
+publication still listed seven objects. A verified CLI download was saved under ignored
+runtime data. The Streamlit publication and verified-download preparation were checked in
+the browser. Offline tests use a fake storage service and additionally cover arbitrary path
+rejection, altered bytes, malformed headers, and safe failure messages.
+
+All 31 offline tests passed after this change. Ruff and the documentation checker passed
+(eight document pairs). The library remains separate from RAG ingestion. Azure cloud Blob
+Storage, production authentication, durability, and hosted CI for this change are unverified.
+See [the storage guide](blob-storage.md).

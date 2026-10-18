@@ -46,3 +46,15 @@ verification applies to the original source and does not validate translation fi
 **Realistic next steps** are better labelled evaluation data, explicit document precedence,
 draft recovery, stronger relevance checks, and production access controls if deployment is ever
 needed. More agents or services do not automatically improve this focused application.
+
+**Azure Functions locally** runs the existing FastAPI business API through Microsoft's
+Core Tools host and Python ASGI adapter. An HTTP request triggers the function, which
+passes it to FastAPI. This demonstrates the local programming model and HTTP integration
+without an Azure subscription. It does not demonstrate cloud deployment, scaling,
+managed identity, or Azure-hosted model inference. See [the local guide](azure-local.md).
+
+**Blob Storage** stores named objects in containers. In the optional [storage exercise](blob-storage.md),
+the Python SDK sends real HTTP requests to a local Azurite emulator. Metadata describes the
+document while a checksum checks downloaded bytes. This is object storage, not a vector
+database: Chroma still performs semantic retrieval. Emulator Shared Key authentication does
+not demonstrate production managed identity or Azure cloud deployment.

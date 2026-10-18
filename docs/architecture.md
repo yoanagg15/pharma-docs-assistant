@@ -12,13 +12,15 @@ flowchart LR
     V --> E[Local FastEmbed ONNX]
     G --> LT[lookup_delivery tool]
     G --> DT[prepare_draft tool]
-    LT --> API[Simulated FastAPI]
+    LT --> API[Simulated FastAPI: Uvicorn or local Functions]
     DT --> API
     API --> DB[(SQLite: deliveries / drafts / complaints)]
     G --> CHECK[Deterministic citation verification]
     CHECK --> UI
     UI --> CONFIRM[Explicit confirmation action]
     CONFIRM --> API
+    UI --> BS[Optional Blob SDK: explicit UI actions]
+    BS --> AZ[Local Azurite procedure library]
 ```
 
 ## Responsibilities
@@ -53,6 +55,11 @@ No hidden reasoning is shown. Activity traces contain only observable steps and 
 
 ## RAG pipeline
 
+The optional [Blob library](blob-storage.md) publishes unchanged seeded procedures using
+`azure-storage-blob` and a fixed localhost Azurite endpoint. It is invoked only by explicit
+UI/CLI actions, not agents. Download checks verify bounded size, checksum, and header metadata.
+The RAG pipeline below still indexes the local seed corpus; it does not ingest remote blobs.
+
 Seven versioned Markdown files contain JSON metadata between `---` delimiters. LangChain
 Documents preserve document ID, title, country, effective date, status, section, and version.
 Section-aware processing uses `RecursiveCharacterTextSplitter` within sections, with 900-character
@@ -75,6 +82,11 @@ may abstain even when chunks were retrieved. Evaluation reports retrieval rankin
 from answer-quality review, and never converts vector distances into confidence percentages.
 
 ## API and confirmation
+
+An optional `function_app.py` wraps this same API with the official Azure Functions
+`AsgiFunctionApp` adapter. Core Tools runs it on localhost port 7071 with the same API paths
+and SQLite lifecycle. It is an alternative local HTTP host, not another business service or
+cloud deployment. See [local Azure Functions](azure-local.md).
 
 The Streamlit UI and graph use `BusinessClient` over HTTP; only the FastAPI application owns
 SQLite. GET `/deliveries/{id}` reads seeded fictional records. PUT `/drafts/{id}` validates the

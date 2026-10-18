@@ -49,6 +49,15 @@ workflow is bounded, CI is configured, and deployment/authentication remain futu
 
 ## Interview questions tied to the code
 
+Optional Azure follow-up: use the [local Functions guide](azure-local.md) to start Core Tools,
+look up DEL-1002 on port 7071, and explain how the same FastAPI API is adapted to a Python
+HTTP-triggered function. Describe this as local development and testing, not Azure deployment.
+
+Optional Blob follow-up: open Document storage, publish the seven fictional procedures to
+Azurite, inspect metadata, and prepare a verified download. Explain the distinction between
+object storage and the Chroma vector index, and label the emulator as local rather than cloud.
+See [the Blob guide](blob-storage.md).
+
 - **Why LangGraph?** `workflow.py` makes routing, tool execution, verification, and termination
   explicit. There are at most four tool choices and a recursion limit; this is inspectable.
 - **Which parts are agents?** The model selects an allowed tool/query and evidence excerpts.

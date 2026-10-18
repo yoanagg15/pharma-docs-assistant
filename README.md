@@ -20,6 +20,9 @@ Procedures are illustrative operational examples, not medical or regulatory guid
 - English / Bulgarian language selector for the UI and model answers. Original source excerpts
   remain in English; Bulgarian translations are labelled and do not replace citation verification.
 - Offline pytest coverage and GitHub Actions CI. No cloud deployment is implemented or claimed.
+- Optional Azure Functions local host for the same business API; no Azure subscription required.
+- Optional bilingual Document storage tab with real Azure Blob SDK calls to local Azurite:
+  publish seeded procedures, inspect metadata, and download verified originals.
 
 ## Architecture
 
@@ -126,6 +129,15 @@ returns the original complaint reference. Editing fields disables confirmation u
 updated draft is saved and reviewed. Use **Start a new complaint** after submission.
 
 ## Checks and evaluations
+
+For an Azure-related exercise without an account or subscription, see
+[local Azure Functions](docs/azure-local.md). With Core Tools v4 installed, start the API using
+`.\scripts\run_functions.ps1` on port 7071. This is a locally tested runtime integration,
+not a cloud deployment or Azure-hosted AI demonstration.
+
+The separate [Blob Storage exercise](docs/blob-storage.md) uses Azurite on localhost with
+the official Python SDK, without an Azure subscription. It requires Node 22+ and a pinned
+development emulator. It does not change the RAG corpus or upload conversations/complaints.
 
 ```powershell
 uv run --frozen ruff check .
