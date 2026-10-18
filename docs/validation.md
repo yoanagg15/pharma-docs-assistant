@@ -1,5 +1,7 @@
 # Local validation record — 2026-10-18
 
+[English](validation.md) | [Български](bg/validation.md)
+
 Environment: Windows, Python 3.12.12, uv 0.11.29. Exact package versions are in `uv.lock`.
 This record describes the initial local validation, before any user-authorized GitHub upload.
 No hosted deployment or repository visibility change was performed.

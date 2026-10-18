@@ -1,5 +1,7 @@
 # PharmaOps AI — Distribution Support Assistant
 
+[English](README.md) | [Български](README.bg.md)
+
 An independent portfolio project for a junior Python / AI developer. Employees can inspect
 fictional distribution procedures and prepare delivery complaints, then explicitly confirm
 submission to a **simulated** business API. No real pharmaceutical company is involved.
@@ -11,7 +13,8 @@ Procedures are illustrative operational examples, not medical or regulatory guid
 - Groq API integration (Free plan available, subject to provider quotas), optional local
   OpenAI-compatible server, and a clearly labelled deterministic mock mode. No Ollama required.
 - A bounded LangGraph workflow with model-driven tool selection and deterministic controls.
-- Structured extractive answers: each displayed statement must be an exact quote from a cited passage.
+- Structured extractive answers: each original claim must be an exact quote from a cited passage.
+  Bulgarian translations are labelled separately.
 - Ten fictional deliveries in BG, DE, and RO; versioned drafts and idempotent confirmed submissions.
 - Per-session Streamlit state, safe failure messages, and an activity trace without hidden reasoning.
 - English / Bulgarian language selector for the UI and model answers. Original source excerpts
@@ -127,6 +130,7 @@ updated draft is saved and reviewed. Use **Start a new complaint** after submiss
 ```powershell
 uv run --frozen ruff check .
 uv run --frozen ruff format --check .
+uv run --frozen python scripts/check_docs.py
 uv run --frozen pytest -q
 uv run --frozen python -m pharmaops.cli model-check
 uv run --frozen python -m pharmaops.cli evaluate
@@ -173,6 +177,15 @@ formatting, and offline tests without secrets. This is CI; no CD is configured.
 - Local port busy: stop the existing service or change both the command and relevant `.env` URL.
 - Streamlit sessions reset when the process restarts. Business drafts and complaints remain in
   SQLite, but this small UI does not implement a draft-history browser.
+
+## Documentation languages
+
+Project documentation is maintained in English and Bulgarian. Each document links to its
+counterpart; behavioral changes should update both versions together. The fictional RAG
+source corpus remains in English. See [repository instructions](AGENTS.md).
+CI checks for missing language counterparts, broken local documentation links, and mismatched
+executable command/configuration blocks with `scripts/check_docs.py`. Translation accuracy
+and semantic agreement still require human review.
 
 ## Official references used
 

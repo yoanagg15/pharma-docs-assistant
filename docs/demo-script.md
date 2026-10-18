@@ -1,5 +1,7 @@
 # Interview demo — approximately four minutes
 
+[English](demo-script.md) | [Български](bg/demo-script.md)
+
 Use the real configured provider only after `model-check` passes. If using mock mode, state
 up front that model decisions are simulated. Do not present mock responses as LLM validation.
 Start the API/UI and build the index before the demonstration.

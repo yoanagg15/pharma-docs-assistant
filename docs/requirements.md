@@ -1,5 +1,7 @@
 # Requirements and scope
 
+[English](requirements.md) | [Български](bg/requirements.md)
+
 ## User stories and acceptance criteria
 
 | Priority | User story | Acceptance criteria |
@@ -13,6 +15,7 @@
 | P1 | As a reviewer, I need to inspect model behavior honestly. | Real embedding retrieval and optional real-LLM examples are separate from offline tests; unverified capabilities are identified. |
 | P1 | As a user, I need useful errors. | Unknown deliveries, API/model outage, missing index and invalid fields receive actionable messages; no raw credential-bearing exception is shown. |
 | P1 | As a bilingual demonstrator, I need English and Bulgarian. | Language selector translates UI/messages; Bulgarian questions work with a real model; original English source quotes remain inspectable; form input survives language changes. |
+| P1 | As the project owner, I need documentation in both languages. | README and all engineering documents under `docs/` have English/Bulgarian pairs and reciprocal links; commands and recorded results agree; changes update both versions. |
 
 ## Mapping to role requirements
 

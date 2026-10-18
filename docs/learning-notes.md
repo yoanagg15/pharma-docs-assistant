@@ -1,5 +1,7 @@
 # Learning notes
 
+[English](learning-notes.md) | [Български](bg/learning-notes.md)
+
 **Embeddings** turn text into numerical vectors using a pretrained model. Similar meanings
 often produce nearby vectors. Here FastEmbed runs a quantized ONNX model locally on CPU;
 the application does not train the model or send embeddings to a paid service.

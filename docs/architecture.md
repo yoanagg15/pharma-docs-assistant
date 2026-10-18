@@ -1,5 +1,7 @@
 # Architecture and trust boundaries
 
+[English](architecture.md) | [Български](bg/architecture.md)
+
 ```mermaid
 flowchart LR
     U[Employee: fictional information] --> UI[Streamlit session]
