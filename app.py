@@ -44,6 +44,7 @@ st.markdown(
 st.caption(
     t("LOCAL DEMO · FICTIONAL DATA · Independent portfolio project · Illustrative procedures only")
 )
+st.caption(t("Proof of Concept (PoC) · Synthetic pharmaceutical distribution data"))
 st.caption(
     f"{t('Model mode')}: {settings.provider.upper()} · {settings.model} · "
     + t("Local semantic embeddings")

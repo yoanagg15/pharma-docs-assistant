@@ -2,6 +2,8 @@
 
 [English](README.md) | [Български](README.bg.md)
 
+**Proof of Concept (PoC) · Synthetic pharmaceutical distribution data · Local demonstration**
+
 An independent portfolio project for a junior Python / AI developer. Employees can inspect
 fictional distribution procedures and prepare delivery complaints, then explicitly confirm
 submission to a **simulated** business API. No real pharmaceutical company is involved.

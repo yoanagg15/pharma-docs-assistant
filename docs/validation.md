@@ -112,3 +112,33 @@ All 31 offline tests passed after this change. Ruff and the documentation checke
 (eight document pairs). The library remains separate from RAG ingestion. Azure cloud Blob
 Storage, production authentication, durability, and hosted CI for this change are unverified.
 See [the storage guide](blob-storage.md).
+
+## Repository review — 2026-10-18
+
+Reviewed 62 Git-visible working files, three available historical commits, and all locally
+available Git objects (114 blobs, 32 trees, three commits). Pattern checks covered provider
+tokens, private keys, JWTs, credential assignments, authenticated URLs, and SAS signatures.
+The actual local Groq key was compared in memory without printing it. No secret candidates
+or copies of that key were found. Historical trees contained no real `.env`,
+`local.settings.json`, private-key files, or runtime databases. GitHub advertised only
+`master` at `78f419b`, matching the reviewed repository head.
+
+An actual `.env` exists locally and is ignored; `.env.example` has an empty key field.
+The hardcoded Azurite key is a public emulator credential, confirmed against the installed
+package README, not a user or production Azure secret. `local-demo` is a dummy credential.
+No history rewrite or credential deletion was needed.
+
+The seven procedures, generator for ten fictional deliveries, evaluation questions, and test
+fixtures were reviewed; no real customer/company records or sensitive business data were
+identified. Pattern scans for emails, international phones, IBANs, and labelled personal
+identifiers found no candidates in project file contents or historical versions. Git author
+metadata is outside this dataset review. These checks cannot guarantee the absence of every
+unknown secret, sensitive detail, or remote-only object.
+
+README explains architecture, technologies, configuration, indexing, startup, and verification.
+Both README versions and the bilingual UI now explicitly display **Proof of Concept (PoC)**
+and **synthetic pharmaceutical distribution data**. The RAG source corpus was not changed.
+Ruff lint and formatting (47 files), documentation checks (eight pairs), and offline tests
+passed again: **31 passed**. This is not a fresh real-model/cloud evaluation or a production
+security audit. The one-off report remains in ignored `artifacts/repository-audit.json`;
+it contains locations and categories, never matched secret values.

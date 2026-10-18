@@ -3,6 +3,7 @@
 import re
 
 BG = {
+    "Proof of Concept (PoC) · Synthetic pharmaceutical distribution data": "Proof of Concept (PoC) · Синтетични данни за фармацевтична дистрибуция",
     "Procedure header is invalid. Inspect it and republish the seed.": "Заглавната част на процедурата е невалидна. Прегледайте я и качете отново оригинала.",
     "Document storage": "Хранилище за документи",
     "Fictional procedure library": "Библиотека с измислени процедури",
